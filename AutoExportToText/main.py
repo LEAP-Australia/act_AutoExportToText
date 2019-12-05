@@ -15,14 +15,14 @@ limitations under the License.
 
 Author: Nish Joseph
 '''
+# pylint: disable=unused-argument
+# pylint: disable=undefined-variable
 
-from os.path import abspath
 from os.path import join as joinpath
 
 # pylint: disable=missing-docstring
 class SelectResultObj:
     # pylint: disable=no-self-use
-    # pylint: disable=unused-argument
 
     def __init__(self, api, entity, prop):
         self.api = api
@@ -70,11 +70,11 @@ class SelectResultObj:
     def isvalid(self, obj, prop):
         return prop.Value is not None
 
-def exportToText(obj, func):
+def export_to_text(obj, func):
     try:
         result = obj.Properties['ResObj'].Value
         out_path = ExtAPI.Application.InvokeUIThread(
-            lambda: abspath(joinpath(obj.Analysis.WorkingDir, '../../../user_files')))  
+            lambda: obj.Analysis.WorkingDir)
         file_path = joinpath(out_path, obj.Properties['filePath'].Value)
         ExtAPI.Log.WriteError(file_path)
         ExtAPI.Application.InvokeUIThread(

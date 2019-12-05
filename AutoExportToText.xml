@@ -3,7 +3,7 @@
     <author>Nishit Joseph @ LEAP Australia Pty Ltd</author>
     <description>Auto export results to text.</description>
     <guid>79b9afd0-6014-4851-bba6-d01685a1047c</guid>
-    <script compiled="false" src="main.py" />
+    <script compiled="true" src="main.py" />
     <templates>
         <controltemplate name="result_object_selection" version="1">
 	    <property name="ResObjSelection" caption="Result Selection"
@@ -23,7 +23,7 @@
                 isload="false">
             <target type="analysis" location="post" ></target>
             <callbacks>
-                <ongenerate>exportToText</ongenerate>
+                <ongenerate>export_to_text</ongenerate>
             </callbacks>
             <property name="ResObj" caption="Result Object" control="result_object_selection" />
             <property name="filePath" caption="File Path" control="text" />
