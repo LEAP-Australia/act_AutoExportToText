@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1" name="AutoExportToText">
+    <author>Nishit Joseph @ LEAP Australia Pty Ltd</author>
+    <description>Auto export results to text.</description>
+    <guid>79b9afd0-6014-4851-bba6-d01685a1047c</guid>
+    <script compiled="false" src="main.py" />
+    <templates>
+        <controltemplate name="result_object_selection" version="1">
+	    <property name="ResObjSelection" caption="Result Selection"
+                      control="select" class="SelectResultObj" />
+        </controltemplate>
+    </templates>
+    <interface context="Mechanical">
+        <images>images</images>
+        <toolbar name="AutoExportTB" caption="Auto Export Text">
+            <entry name="AutoExportButton" caption="Export"
+                   icon="AutoExportIcon" userobject="AutoResultExport">
+            </entry>
+        </toolbar>
+    </interface>
+    <simdata context="Mechanical">
+        <object name="AutoResultExport" version="" caption="Auto Export Result" icon="AutoExportIcon"
+                isload="false">
+            <target type="analysis" location="post" ></target>
+            <callbacks>
+                <ongenerate>exportToText</ongenerate>
+            </callbacks>
+            <property name="ResObj" caption="Result Object" control="result_object_selection" />
+            <property name="filePath" caption="File Path" control="text" />
+        </object>
+    </simdata>
+</extension>
